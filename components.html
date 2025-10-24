@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Component Library - Tydal Theme</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-content container">
+      <a href="index.html" class="logo">YourBrand</a>
+      <nav class="nav">
+        <a href="index.html" class="btn btn-primary">Back to Home</a>
+      </nav>
+    </div>
+  </header>
+
+  <main style="padding-top: calc(var(--header-height) + var(--space-12));">
+
+    <!-- Typography -->
+    <section class="section">
+      <div class="container">
+        <h2 class="mb-8">Typography</h2>
+
+        <div class="card mb-8">
+          <h1>Heading 1</h1>
+          <h2>Heading 2</h2>
+          <h3>Heading 3</h3>
+          <h4>Heading 4</h4>
+          <h5>Heading 5</h5>
+          <h6>Heading 6</h6>
+
+          <p>This is a regular paragraph with <strong>bold text</strong> and <a href="#">a link</a>. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+          <p class="text-accent">This is accent text using the highlight color (#F9A643).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Buttons -->
+    <section class="section bg-white">
+      <div class="container">
+        <h2 class="mb-8">Buttons</h2>
+
+        <div class="card mb-8">
+          <h3>Primary Buttons</h3>
+          <div style="display: flex; gap: var(--space-4); flex-wrap: wrap; margin-bottom: var(--space-6);">
+            <button class="btn btn-primary btn-lg">Large Primary</button>
+            <button class="btn btn-primary">Regular Primary</button>
+            <button class="btn btn-primary btn-sm">Small Primary</button>
+          </div>
+
+          <h3>Secondary Buttons</h3>
+          <div style="display: flex; gap: var(--space-4); flex-wrap: wrap; margin-bottom: var(--space-6);">
+            <button class="btn btn-secondary btn-lg">Large Secondary</button>
+            <button class="btn btn-secondary">Regular Secondary</button>
+            <button class="btn btn-secondary btn-sm">Small Secondary</button>
+          </div>
+
+          <h3>Accent Buttons</h3>
+          <div style="display: flex; gap: var(--space-4); flex-wrap: wrap;">
+            <button class="btn btn-accent btn-lg">Large Accent</button>
+            <button class="btn btn-accent">Regular Accent</button>
+            <button class="btn btn-accent btn-sm">Small Accent</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cards -->
+    <section class="section">
+      <div class="container">
+        <h2 class="mb-8">Cards</h2>
+
+        <div class="grid grid-cols-3">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Card Title</h3>
+              <p class="card-subtitle">Card subtitle text</p>
+            </div>
+            <div class="card-body">
+              <p>This is the card body content. You can put any content here including text, images, or other components.</p>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-primary">Action</button>
+              <button class="btn btn-secondary">Cancel</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Simple Card</h3>
+            </div>
+            <div class="card-body">
+              <p>A simpler card without a subtitle or footer. Perfect for displaying basic information.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Icon Card</h3>
+            </div>
+            <div class="card-body">
+              <div class="feature-icon" style="margin-bottom: var(--space-4);">🎨</div>
+              <p>Cards can include icons and other visual elements to enhance the design.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Forms -->
+    <section class="section bg-white">
+      <div class="container">
+        <h2 class="mb-8">Form Elements</h2>
+
+        <div class="card" style="max-width: 600px;">
+          <form class="form">
+            <div class="form-group">
+              <label for="text-input" class="form-label">Text Input</label>
+              <input type="text" id="text-input" class="form-input" placeholder="Enter text...">
+            </div>
+
+            <div class="form-group">
+              <label for="email-input" class="form-label">Email Input</label>
+              <input type="email" id="email-input" class="form-input" placeholder="your@email.com">
+            </div>
+
+            <div class="form-group">
+              <label for="select-input" class="form-label">Select Dropdown</label>
+              <select id="select-input" class="form-select">
+                <option>Option 1</option>
+                <option>Option 2</option>
+                <option>Option 3</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="textarea-input" class="form-label">Textarea</label>
+              <textarea id="textarea-input" class="form-textarea" placeholder="Enter your message..."></textarea>
+            </div>
+
+            <div style="display: flex; gap: var(--space-4);">
+              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="reset" class="btn btn-secondary">Reset</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Grid System -->
+    <section class="section">
+      <div class="container">
+        <h2 class="mb-8">Grid System</h2>
+
+        <h3>2 Columns</h3>
+        <div class="grid grid-cols-2 mb-8">
+          <div class="card"><p class="mb-0">Column 1</p></div>
+          <div class="card"><p class="mb-0">Column 2</p></div>
+        </div>
+
+        <h3>3 Columns</h3>
+        <div class="grid grid-cols-3 mb-8">
+          <div class="card"><p class="mb-0">Column 1</p></div>
+          <div class="card"><p class="mb-0">Column 2</p></div>
+          <div class="card"><p class="mb-0">Column 3</p></div>
+        </div>
+
+        <h3>4 Columns</h3>
+        <div class="grid grid-cols-4">
+          <div class="card"><p class="mb-0">Column 1</p></div>
+          <div class="card"><p class="mb-0">Column 2</p></div>
+          <div class="card"><p class="mb-0">Column 3</p></div>
+          <div class="card"><p class="mb-0">Column 4</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Color Palette -->
+    <section class="section bg-white">
+      <div class="container">
+        <h2 class="mb-8">Color Palette</h2>
+
+        <div class="grid grid-cols-4">
+          <div class="card">
+            <div style="height: 100px; background-color: var(--color-primary); border-radius: var(--radius-md); margin-bottom: var(--space-4);"></div>
+            <h4>Primary</h4>
+            <p style="font-family: var(--font-mono); font-size: var(--font-size-sm);">#030076</p>
+          </div>
+
+          <div class="card">
+            <div style="height: 100px; background-color: var(--color-accent); border-radius: var(--radius-md); margin-bottom: var(--space-4);"></div>
+            <h4>Accent</h4>
+            <p style="font-family: var(--font-mono); font-size: var(--font-size-sm);">#F9A643</p>
+          </div>
+
+          <div class="card">
+            <div style="height: 100px; background-color: var(--color-background); border-radius: var(--radius-md); margin-bottom: var(--space-4); border: 1px solid var(--color-border);"></div>
+            <h4>Background</h4>
+            <p style="font-family: var(--font-mono); font-size: var(--font-size-sm);">#F9F9F9</p>
+          </div>
+
+          <div class="card">
+            <div style="height: 100px; background-color: var(--color-text-primary); border-radius: var(--radius-md); margin-bottom: var(--space-4);"></div>
+            <h4>Text</h4>
+            <p style="font-family: var(--font-mono); font-size: var(--font-size-sm);">#000000</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Spacing Examples -->
+    <section class="section">
+      <div class="container">
+        <h2 class="mb-8">Spacing System</h2>
+
+        <div class="card">
+          <p>The theme includes a consistent spacing system using CSS variables:</p>
+          <ul style="list-style: none; font-family: var(--font-mono); font-size: var(--font-size-sm);">
+            <li style="padding: var(--space-2) 0;">--space-1: 0.25rem (4px)</li>
+            <li style="padding: var(--space-2) 0;">--space-2: 0.5rem (8px)</li>
+            <li style="padding: var(--space-2) 0;">--space-4: 1rem (16px)</li>
+            <li style="padding: var(--space-2) 0;">--space-8: 2rem (32px)</li>
+            <li style="padding: var(--space-2) 0;">--space-12: 3rem (48px)</li>
+            <li style="padding: var(--space-2) 0;">--space-16: 4rem (64px)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2024 YourBrand Component Library</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+
+</body>
+</html>
