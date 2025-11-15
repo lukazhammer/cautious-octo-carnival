@@ -1,0 +1,55 @@
+// Prisma schema for Brandora Audience Research Module
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  moduleProgress ModuleProgress[]
+  citations      Citation[]
+}
+
+model ModuleProgress {
+  id        String   @id @default(cuid())
+  userId    String
+  moduleId  Int      @default(2) // Module 2: Audience Research
+  data      Json     // JSONB field for flexible module data storage
+  location  Json?    // Location data: {country, region, city}
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, moduleId])
+  @@index([userId])
+  @@map("module_progress")
+}
+
+model Citation {
+  id        String   @id @default(cuid())
+  userId    String
+  moduleId  Int      @default(2)
+  source    String   // Name of the source (e.g., "Statista", "Pew Research")
+  url       String?  // URL to the source
+  publisher String?  // Publisher name
+  date      String?  // Publication date
+  quote     String?  // Relevant quote or statistic
+  metadata  Json?    // Additional metadata
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, moduleId])
+  @@map("citations")
+}
