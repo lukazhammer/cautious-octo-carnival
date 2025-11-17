@@ -1,0 +1,14 @@
+{
+  "dashboardName": "Revenue Dashboard",
+  "description": "Detailed revenue, MRR, ARR, and monetization metrics",
+  "widgets": [
+    {"id": "mrr_waterfall", "type": "waterfall_chart", "title": "MRR Movement", "components": ["starting_mrr", "new_mrr", "expansion_mrr", "contraction_mrr", "churned_mrr", "ending_mrr"]},
+    {"id": "arr_trend", "type": "line_chart", "title": "ARR Trend (12 months)"},
+    {"id": "revenue_by_tier", "type": "stacked_area_chart", "title": "MRR by Tier"},
+    {"id": "cohort_revenue", "type": "cohort_table", "title": "Revenue Retention by Cohort"},
+    {"id": "expansion_revenue", "type": "metric_card", "title": "Expansion MRR", "calculation": "upgrades + seat_expansion + addons"},
+    {"id": "nrr", "type": "metric_card", "title": "Net Revenue Retention", "target": 110, "format": "percentage"},
+    {"id": "arpu", "type": "metric_card", "title": "Average Revenue Per User", "format": "currency"},
+    {"id": "ltv_by_tier", "type": "bar_chart", "title": "Lifetime Value by Tier"}
+  ]
+}

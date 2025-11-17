@@ -1,0 +1,55 @@
+{
+  "dashboardName": "Growth Dashboard",
+  "description": "Week-over-week and month-over-month growth metrics",
+  "widgets": [
+    {
+      "id": "wow_growth",
+      "type": "metric_grid",
+      "title": "Week-over-Week Growth",
+      "metrics": [
+        {"name": "signups_wow", "label": "Signups", "format": "percentage_change", "target": 15},
+        {"name": "mrr_wow", "label": "MRR", "format": "percentage_change", "target": 3},
+        {"name": "traffic_wow", "label": "Traffic", "format": "percentage_change", "target": 10},
+        {"name": "conversions_wow", "label": "Conversions", "format": "percentage_change", "target": 15}
+      ]
+    },
+    {
+      "id": "mom_growth",
+      "type": "metric_grid",
+      "title": "Month-over-Month Growth",
+      "metrics": [
+        {"name": "signups_mom", "label": "Signups", "format": "percentage_change"},
+        {"name": "mrr_mom", "label": "MRR", "format": "percentage_change"},
+        {"name": "customers_mom", "label": "Paying Customers", "format": "percentage_change"},
+        {"name": "arr_mom", "label": "ARR", "format": "percentage_change"}
+      ]
+    },
+    {
+      "id": "cohort_analysis",
+      "type": "cohort_table",
+      "title": "Signup Cohort Analysis",
+      "cohortBy": "signup_week",
+      "measureBy": "activation_rate"
+    },
+    {
+      "id": "viral_metrics",
+      "type": "metric_grid",
+      "title": "Viral & Referral Metrics",
+      "metrics": [
+        {"name": "referral_rate", "label": "Referral Rate", "format": "percentage", "target": 15},
+        {"name": "viral_coefficient", "label": "K-Factor", "format": "number", "target": 0.5},
+        {"name": "referral_signups", "label": "Referral Signups"},
+        {"name": "referral_conversion", "label": "Referral Conv Rate", "format": "percentage"}
+      ]
+    },
+    {
+      "id": "growth_accounting",
+      "type": "waterfall_chart",
+      "title": "Monthly Active Users Growth Accounting",
+      "startValue": "starting_mau",
+      "additions": ["new_users", "resurrected_users"],
+      "subtractions": ["churned_users"],
+      "endValue": "ending_mau"
+    }
+  ]
+}

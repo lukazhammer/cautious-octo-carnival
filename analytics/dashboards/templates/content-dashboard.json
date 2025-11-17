@@ -1,0 +1,11 @@
+{
+  "dashboardName": "Content Dashboard",
+  "description": "Blog, social, email, and content performance",
+  "widgets": [
+    {"id": "top_blog_posts", "type": "table", "title": "Top Blog Posts", "metrics": ["pageviews", "time_on_page", "signups"]},
+    {"id": "social_engagement", "type": "bar_chart", "title": "Social Engagement by Platform"},
+    {"id": "email_performance", "type": "table", "title": "Email Campaign Performance"},
+    {"id": "content_roi", "type": "metric_card", "title": "Content ROI", "calculation": "attributed_revenue / content_cost"},
+    {"id": "seo_performance", "type": "line_chart", "title": "Organic Traffic Trend"}
+  ]
+}
