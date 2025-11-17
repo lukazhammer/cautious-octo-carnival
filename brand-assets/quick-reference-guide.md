@@ -313,3 +313,149 @@ AI-powered positioning frameworks that help you discover, define, and communicat
 **Keep this guide handy for daily brand work. For detailed specifications, consult the full brand style guide.**
 
 **Updated:** November 2025 | **Version:** 1.0
+
+---
+
+## Bauhaus Design System (Website)
+
+### Core Principles
+- **Form follows function** - Every element serves a purpose
+- **Geometric shapes** - Circles ○, Squares ■, Triangles ▲
+- **Grid-based** - 12-column rational layouts
+- **High contrast** - Navy, Yellow, Blue on White
+- **Asymmetric** - Dynamic 60/40, 2/3+1/3 splits
+- **Minimal** - No decoration without purpose
+
+### Geometric Shapes
+
+| Shape | Symbol | Usage |
+|-------|--------|-------|
+| **Circle** | ○ | Icons, profiles, brand mark, bullets |
+| **Square** | ■ | Containers, cards, buttons, frames |
+| **Triangle** | ▲ | Arrows, indicators, play buttons, decorative |
+| **Rectangle** | ▬ | Content blocks, progress bars, dividers |
+
+**Colors:** Navy, Blue, Yellow (fill or outline)
+**Sizes:** 40px, 80px, 120px, 200px
+
+### Color Blocking
+
+```
+Navy #070058   → Primary blocks, headers, backgrounds
+Yellow #FFBE44 → Accent blocks, CTAs, highlights
+Blue #6F8AEC   → Interactive, secondary blocks
+White #FFFFFF  → Negative space, clean sections
+```
+
+### Bauhaus Layouts
+- **Split screen:** 50/50 or 60/40 color blocks
+- **Asymmetric grid:** Offset compositions
+- **Floating shapes:** Geometric decorative accents
+- **Diagonal divisions:** Dynamic transitions
+- **Grid patterns:** Subtle background textures
+
+### Bauhaus Typography
+- **Headlines:** Large (64-96px), bold (700), Montserrat
+- **ALL CAPS:** Sparingly for impact
+- **Text containers:** In geometric shapes (squares, circles)
+- **Vertical text:** Sidebar decorative elements
+- **Geometric accents:** Shapes paired with text (○ ■ ▲)
+
+### Bauhaus Components
+
+**Buttons:**
+- Yellow background + Navy border
+- 0-8px border radius (sharp to subtle)
+- Geometric icon (triangle arrow →)
+- Hover: Invert colors
+
+**Cards:**
+- 2px solid border
+- Geometric icon (circle, square, triangle)
+- Minimal shadow or flat
+- Hover: Border color change
+
+**Grids:**
+- 12-column system
+- Asymmetric layouts
+- Equal or varied column widths
+- 20px gutters
+
+### CSS Quick Reference
+
+```css
+/* Bauhaus Variables */
+--bauhaus-navy: #070058;
+--bauhaus-blue: #6F8AEC;
+--bauhaus-yellow: #FFBE44;
+--border-width: 2px;
+--border-radius: 0px; /* Pure Bauhaus */
+--border-radius-soft: 8px;
+
+/* Geometric Shape */
+.circle { border-radius: 50%; aspect-ratio: 1; }
+.square { aspect-ratio: 1; }
+.triangle {
+  width: 0; height: 0;
+  border-style: solid;
+  /* Define border widths for direction */
+}
+
+/* Bauhaus Button */
+.btn-bauhaus {
+  background: var(--bauhaus-yellow);
+  color: var(--bauhaus-navy);
+  border: 2px solid var(--bauhaus-navy);
+  padding: 16px 32px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+```
+
+### Patterns & Decorative Elements
+
+**Circular grid pattern:**
+```css
+background-image: radial-gradient(
+  circle, #070058 2px, transparent 2px
+);
+background-size: 40px 40px;
+opacity: 0.05;
+```
+
+**Diagonal stripes:**
+```css
+background: repeating-linear-gradient(
+  45deg, #F1F9FF, #F1F9FF 10px,
+  #E5E7EB 10px, #E5E7EB 20px
+);
+```
+
+**Floating geometric shapes:**
+- Corners of sections
+- Background (5-20% opacity)
+- Alongside headlines
+- Sizes: 40-200px
+
+### Bauhaus Documentation
+
+**Complete guides:**
+- **Design System:** `/design-templates/website-components/bauhaus-design-system.md`
+- **Patterns & Graphics:** `/design-templates/website-components/bauhaus-patterns-graphics.md`
+- **Implementation:** `/design-templates/website-components/bauhaus-implementation-guide.md`
+
+**Quick checklist:**
+- [ ] Uses geometric shapes (○ ■ ▲)
+- [ ] Grid-based layout (12-column)
+- [ ] High contrast colors
+- [ ] Bold geometric typography
+- [ ] Asymmetric composition
+- [ ] Minimal decoration
+- [ ] Negative space
+- [ ] WCAG AA contrast
+- [ ] Purposeful animation
+- [ ] Mobile-responsive
+
+---
+
+**Updated:** November 2025 (Bauhaus Website Design System Added) | **Version:** 1.1

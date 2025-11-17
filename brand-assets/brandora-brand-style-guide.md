@@ -455,12 +455,36 @@ For entrepreneurs and marketing teams at growing businesses who struggle to clea
 
 ## Digital Applications
 
-### Website Standards
+### Website Standards (Bauhaus Design System)
+
+**Brandora website implements Bauhaus design principles:**
+
+**Core Principles:**
+- **Geometric design language** - Circles, squares, triangles as primary elements
+- **Form follows function** - Every element serves a purpose
+- **Grid-based rationality** - 12-column systematic layouts
+- **Bold, high contrast** - Navy, Blue, Yellow on White
+- **Asymmetric balance** - Dynamic yet organized compositions
+- **Minimalist aesthetic** - Remove the unnecessary
+
+**Technical Standards:**
 - Responsive design (mobile-first)
 - WCAG AA accessibility minimum
-- Brand colors and typography
-- Component library usage
+- Brand colors applied through Bauhaus lens
+- Geometric component library
 - Performance optimized (60 FPS animations)
+- Pure CSS geometric shapes
+- 8px spacing system
+
+**Key Bauhaus Elements:**
+- Geometric shapes as decorative accents
+- Color blocking (Navy, Yellow, Blue sections)
+- Asymmetric layouts (60/40, 2/3 + 1/3 splits)
+- Bauhaus typography (large, bold, geometric)
+- Minimal borders and shadows
+- Rational grid systems
+
+**See:** `/design-templates/website-components/bauhaus-design-system.md` for complete specifications
 
 ### App Interface
 - Consistent with website components
