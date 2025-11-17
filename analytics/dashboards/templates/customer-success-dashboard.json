@@ -1,0 +1,83 @@
+{
+  "dashboardName": "Customer Success Dashboard",
+  "description": "Customer health, retention, and satisfaction metrics",
+  "refreshRate": "hourly",
+  "audience": ["Customer Success Team"],
+  "widgets": [
+    {
+      "id": "customer_health_distribution",
+      "type": "donut_chart",
+      "title": "Customer Health Distribution",
+      "metric": "customer_count",
+      "dimension": "health_score",
+      "categories": ["healthy_70_100", "at_risk_40_69", "critical_0_39"]
+    },
+    {
+      "id": "retention_cohorts",
+      "type": "cohort_table",
+      "title": "Monthly Retention Cohorts",
+      "cohortBy": "signup_month",
+      "measureBy": "active_users",
+      "periods": 12
+    },
+    {
+      "id": "churn_risk_customers",
+      "type": "table",
+      "title": "High Churn Risk Customers",
+      "filter": "health_score < 40 AND tier IN ('complete', 'professional')",
+      "columns": [
+        {"field": "customer_name", "header": "Customer"},
+        {"field": "tier", "header": "Tier"},
+        {"field": "mrr", "header": "MRR"},
+        {"field": "health_score", "header": "Health Score"},
+        {"field": "risk_factors", "header": "Risk Factors"},
+        {"field": "last_login", "header": "Last Active"}
+      ],
+      "sortBy": "mrr_desc",
+      "limit": 20
+    },
+    {
+      "id": "expansion_opportunities",
+      "type": "table",
+      "title": "Expansion Opportunities",
+      "filter": "health_score > 70 AND upgrade_propensity > 60",
+      "columns": [
+        {"field": "customer_name", "header": "Customer"},
+        {"field": "current_tier", "header": "Current Tier"},
+        {"field": "suggested_tier", "header": "Suggested Tier"},
+        {"field": "expansion_mrr", "header": "Potential MRR"},
+        {"field": "upgrade_propensity", "header": "Propensity Score"}
+      ],
+      "limit": 20
+    },
+    {
+      "id": "support_metrics",
+      "type": "metric_grid",
+      "title": "Support Metrics",
+      "metrics": [
+        {"name": "ticket_volume", "label": "Tickets This Week"},
+        {"name": "first_response_time", "label": "First Response", "format": "hours", "target": 4},
+        {"name": "resolution_time", "label": "Avg Resolution", "format": "hours", "target": 24},
+        {"name": "csat", "label": "CSAT", "format": "percentage", "target": 90}
+      ]
+    },
+    {
+      "id": "feature_adoption_by_tier",
+      "type": "heatmap",
+      "title": "Feature Adoption by Tier",
+      "xAxis": "tier",
+      "yAxis": "feature",
+      "colorScale": "adoption_percentage"
+    },
+    {
+      "id": "nps_trend",
+      "type": "line_chart",
+      "title": "NPS Trend (by Tier)",
+      "xAxis": "month",
+      "yAxis": "nps_score",
+      "series": "tier",
+      "showTarget": true,
+      "targetValue": 50
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "dashboardName": "Executive Dashboard",
+  "description": "High-level overview for C-suite and board members",
+  "refreshRate": "real-time",
+  "audience": ["CEO", "Founders", "Board"],
+  "layout": "single-page",
+  "widgets": [
+    {
+      "id": "north_star_metric",
+      "type": "big_number",
+      "title": "Active Brand Builders (North Star)",
+      "description": "Users who completed ≥1 module AND exported/shared in last 30 days",
+      "metric": "active_brand_builders",
+      "calculation": "COUNT(DISTINCT user_id WHERE module_completed >= 1 AND (pdf_exported >= 1 OR content_shared >= 1) IN LAST 30 DAYS)",
+      "target": 500,
+      "currentValue": "${current_active_brand_builders}",
+      "trend": "30_day",
+      "position": {"row": 1, "col": 1, "width": 12, "height": 2}
+    },
+    {
+      "id": "mrr",
+      "type": "metric_card",
+      "title": "Monthly Recurring Revenue",
+      "metric": "mrr",
+      "calculation": "SUM(subscription_amount WHERE status='active' NORMALIZED TO MONTHLY)",
+      "currentValue": "${current_mrr}",
+      "trend": "7_day",
+      "target": 340000,
+      "format": "currency_usd",
+      "position": {"row": 3, "col": 1, "width": 3, "height": 2}
+    },
+    {
+      "id": "arr",
+      "type": "metric_card",
+      "title": "Annual Recurring Revenue",
+      "metric": "arr",
+      "calculation": "mrr * 12",
+      "currentValue": "${current_arr}",
+      "trend": "30_day",
+      "target": 4080000,
+      "format": "currency_usd",
+      "position": {"row": 3, "col": 4, "width": 3, "height": 2}
+    },
+    {
+      "id": "daily_active_users",
+      "type": "metric_card",
+      "title": "Daily Active Users",
+      "metric": "dau",
+      "calculation": "COUNT(DISTINCT user_id WHERE meaningful_action = true AND date = TODAY)",
+      "currentValue": "${current_dau}",
+      "trend": "7_day_average",
+      "target": "${total_users * 0.15}",
+      "format": "number",
+      "position": {"row": 3, "col": 7, "width": 3, "height": 2}
+    },
+    {
+      "id": "weekly_signups",
+      "type": "metric_card",
+      "title": "Weekly Signups",
+      "metric": "weekly_signups",
+      "calculation": "COUNT(DISTINCT user_id WHERE signup_date >= DATE_SUB(TODAY, 7))",
+      "currentValue": "${weekly_signups}",
+      "trend": "week_over_week",
+      "target": "${weekly_signups * 1.15}",
+      "targetLabel": "+15% WoW growth",
+      "format": "number",
+      "position": {"row": 3, "col": 10, "width": 3, "height": 2}
+    },
+    {
+      "id": "free_to_paid_conversion",
+      "type": "metric_card",
+      "title": "Free → Paid Conversion (30d)",
+      "metric": "conversion_rate",
+      "calculation": "(COUNT(DISTINCT user_id WHERE first_payment_date <= signup_date + 30) / COUNT(DISTINCT user_id WHERE signup_date >= DATE_SUB(TODAY, 60))) * 100",
+      "currentValue": "${conversion_rate}",
+      "trend": "30_day",
+      "target": 8.0,
+      "format": "percentage",
+      "position": {"row": 5, "col": 1, "width": 3, "height": 2}
+    },
+    {
+      "id": "churn_rate",
+      "type": "metric_card",
+      "title": "Monthly Churn Rate",
+      "metric": "churn_rate",
+      "calculation": "(COUNT(DISTINCT user_id WHERE cancellation_date IN CURRENT_MONTH) / COUNT(DISTINCT user_id WHERE subscription_status='active' AT MONTH_START)) * 100",
+      "currentValue": "${churn_rate}",
+      "trend": "30_day",
+      "target": 5.0,
+      "targetDirection": "down",
+      "format": "percentage",
+      "position": {"row": 5, "col": 4, "width": 3, "height": 2}
+    },
+    {
+      "id": "nps",
+      "type": "metric_card",
+      "title": "Net Promoter Score",
+      "metric": "nps",
+      "calculation": "(COUNT(promoters) - COUNT(detractors)) / COUNT(total_responses) * 100",
+      "description": "Promoters (9-10) minus Detractors (0-6)",
+      "currentValue": "${nps_score}",
+      "trend": "90_day",
+      "target": 50,
+      "format": "number",
+      "position": {"row": 5, "col": 7, "width": 3, "height": 2}
+    },
+    {
+      "id": "net_revenue_retention",
+      "type": "metric_card",
+      "title": "Net Revenue Retention",
+      "metric": "nrr",
+      "calculation": "((starting_mrr + expansion_mrr - churned_mrr - contraction_mrr) / starting_mrr) * 100",
+      "currentValue": "${nrr}",
+      "trend": "90_day",
+      "target": 110,
+      "format": "percentage",
+      "position": {"row": 5, "col": 10, "width": 3, "height": 2}
+    },
+    {
+      "id": "mrr_growth_chart",
+      "type": "line_chart",
+      "title": "MRR Growth (90 days)",
+      "metrics": ["total_mrr", "new_mrr", "expansion_mrr", "churned_mrr"],
+      "xAxis": "date",
+      "yAxis": "mrr_value",
+      "timeRange": "90_days",
+      "format": "currency_usd",
+      "chartType": "area_stacked",
+      "position": {"row": 7, "col": 1, "width": 6, "height": 4}
+    },
+    {
+      "id": "user_growth_chart",
+      "type": "line_chart",
+      "title": "User Growth (90 days)",
+      "metrics": ["total_users", "active_users", "paying_customers"],
+      "xAxis": "date",
+      "yAxis": "user_count",
+      "timeRange": "90_days",
+      "chartType": "line",
+      "position": {"row": 7, "col": 7, "width": 6, "height": 4}
+    },
+    {
+      "id": "key_wins",
+      "type": "list",
+      "title": "Key Wins This Week",
+      "dataSource": "manual_input",
+      "maxItems": 5,
+      "updateFrequency": "weekly",
+      "position": {"row": 11, "col": 1, "width": 6, "height": 3}
+    },
+    {
+      "id": "key_losses",
+      "type": "list",
+      "title": "Key Challenges This Week",
+      "dataSource": "manual_input",
+      "maxItems": 5,
+      "updateFrequency": "weekly",
+      "position": {"row": 11, "col": 7, "width": 6, "height": 3}
+    }
+  ],
+  "filters": [
+    {
+      "type": "date_range",
+      "default": "last_30_days",
+      "options": ["last_7_days", "last_30_days", "last_90_days", "year_to_date", "custom"]
+    }
+  ],
+  "alerts": [
+    {
+      "metric": "weekly_signups",
+      "condition": "week_over_week_growth < 0.05",
+      "severity": "warning",
+      "notification": ["ceo@brandora.com", "#exec-alerts"]
+    },
+    {
+      "metric": "churn_rate",
+      "condition": "value > 0.07",
+      "severity": "critical",
+      "notification": ["ceo@brandora.com", "cfo@brandora.com", "#exec-alerts"]
+    },
+    {
+      "metric": "mrr",
+      "condition": "week_over_week_growth < 0",
+      "severity": "critical",
+      "notification": ["ceo@brandora.com", "cfo@brandora.com"]
+    }
+  ],
+  "exportFormats": ["pdf", "email_summary"],
+  "scheduledReports": [
+    {
+      "frequency": "daily",
+      "time": "08:00",
+      "recipients": ["ceo@brandora.com"],
+      "format": "email_summary"
+    },
+    {
+      "frequency": "weekly",
+      "day": "monday",
+      "time": "07:00",
+      "recipients": ["ceo@brandora.com", "leadership@brandora.com"],
+      "format": "pdf"
+    }
+  ]
+}

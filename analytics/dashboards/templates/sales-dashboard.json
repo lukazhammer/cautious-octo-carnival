@@ -1,0 +1,67 @@
+{
+  "dashboardName": "Sales Dashboard",
+  "description": "Sales pipeline, conversion rates, and revenue metrics",
+  "refreshRate": "hourly",
+  "audience": ["Sales Team", "Revenue Team"],
+  "widgets": [
+    {
+      "id": "pipeline_value",
+      "type": "metric_card",
+      "title": "Pipeline Value",
+      "metric": "pipeline_mrr",
+      "format": "currency"
+    },
+    {
+      "id": "conversion_by_tier",
+      "type": "table",
+      "title": "Conversion Rates by Tier",
+      "columns": [
+        {"field": "tier", "header": "Tier"},
+        {"field": "trial_to_paid", "header": "Trial → Paid", "format": "percentage"},
+        {"field": "demo_to_customer", "header": "Demo → Customer", "format": "percentage"},
+        {"field": "avg_deal_size", "header": "Avg Deal Size", "format": "currency"},
+        {"field": "sales_cycle_days", "header": "Sales Cycle", "format": "days"}
+      ]
+    },
+    {
+      "id": "monthly_sales_funnel",
+      "type": "funnel_chart",
+      "title": "Monthly Sales Funnel",
+      "steps": [
+        {"name": "Free Signups", "metric": "free_signups"},
+        {"name": "Product Qualified", "metric": "pql_count"},
+        {"name": "Pricing Viewed", "metric": "pricing_views"},
+        {"name": "Checkout Started", "metric": "checkout_starts"},
+        {"name": "Purchase Completed", "metric": "purchases"}
+      ]
+    },
+    {
+      "id": "win_loss_analysis",
+      "type": "stacked_bar_chart",
+      "title": "Win/Loss Analysis",
+      "xAxis": "week",
+      "yAxis": "count",
+      "series": ["won", "lost_to_competitor", "lost_to_price", "lost_to_timing", "lost_other"]
+    },
+    {
+      "id": "upsell_crosssell_rate",
+      "type": "metric_card",
+      "title": "Upsell/Cross-sell Rate",
+      "metric": "expansion_rate",
+      "calculation": "(expansion_customers / total_customers) * 100",
+      "target": 10,
+      "format": "percentage"
+    },
+    {
+      "id": "demo_metrics",
+      "type": "metric_grid",
+      "title": "Demo Performance",
+      "metrics": [
+        {"name": "demo_requests", "label": "Demo Requests"},
+        {"name": "demos_completed", "label": "Demos Completed"},
+        {"name": "demo_to_trial", "label": "Demo → Trial Rate", "format": "percentage"},
+        {"name": "demo_to_paid", "label": "Demo → Paid Rate", "format": "percentage"}
+      ]
+    }
+  ]
+}

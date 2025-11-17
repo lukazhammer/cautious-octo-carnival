@@ -1,0 +1,122 @@
+{
+  "dashboardName": "Marketing Dashboard",
+  "description": "Marketing channel performance, campaigns, and acquisition metrics",
+  "refreshRate": "hourly",
+  "audience": ["Marketing Team", "Growth Team"],
+  "widgets": [
+    {
+      "id": "traffic_by_source",
+      "type": "pie_chart",
+      "title": "Traffic by Source (30 days)",
+      "metric": "traffic",
+      "dimension": "source",
+      "categories": ["organic_search", "paid_search", "social_organic", "social_paid", "direct", "referral", "email", "other"]
+    },
+    {
+      "id": "channel_performance_table",
+      "type": "table",
+      "title": "Channel Performance Overview",
+      "columns": [
+        {"field": "channel", "header": "Channel"},
+        {"field": "traffic", "header": "Traffic", "format": "number"},
+        {"field": "signups", "header": "Signups", "format": "number"},
+        {"field": "conversion_rate", "header": "Conv Rate", "format": "percentage"},
+        {"field": "cac", "header": "CAC", "format": "currency"},
+        {"field": "ltv_cac_ratio", "header": "LTV:CAC", "format": "ratio"},
+        {"field": "mrr", "header": "MRR", "format": "currency"}
+      ]
+    },
+    {
+      "id": "campaign_roi",
+      "type": "bar_chart",
+      "title": "Campaign ROI (Top 10)",
+      "xAxis": "campaign_name",
+      "yAxis": "roi_percentage",
+      "limit": 10,
+      "sortBy": "value_desc",
+      "showValues": true
+    },
+    {
+      "id": "content_engagement",
+      "type": "table",
+      "title": "Top Performing Content",
+      "columns": [
+        {"field": "content_title", "header": "Content"},
+        {"field": "pageviews", "header": "Views"},
+        {"field": "avg_time_on_page", "header": "Avg Time"},
+        {"field": "conversion_rate", "header": "Conv Rate"},
+        {"field": "signups", "header": "Signups"}
+      ],
+      "limit": 10
+    },
+    {
+      "id": "email_metrics",
+      "type": "metric_grid",
+      "title": "Email Marketing Metrics",
+      "metrics": [
+        {"name": "sent", "label": "Emails Sent", "format": "number"},
+        {"name": "open_rate", "label": "Open Rate", "format": "percentage", "target": 35},
+        {"name": "click_rate", "label": "Click Rate", "format": "percentage", "target": 8},
+        {"name": "conversion_rate", "label": "Conversion", "format": "percentage", "target": 3},
+        {"name": "unsubscribe_rate", "label": "Unsub Rate", "format": "percentage", "target": 0.5}
+      ]
+    },
+    {
+      "id": "social_media_metrics",
+      "type": "table",
+      "title": "Social Media Performance",
+      "columns": [
+        {"field": "platform", "header": "Platform"},
+        {"field": "followers", "header": "Followers"},
+        {"field": "engagement_rate", "header": "Engagement", "format": "percentage"},
+        {"field": "traffic", "header": "Traffic"},
+        {"field": "signups", "header": "Signups"},
+        {"field": "cac", "header": "CAC", "format": "currency"}
+      ]
+    },
+    {
+      "id": "paid_ads_performance",
+      "type": "metric_grid",
+      "title": "Paid Advertising Performance",
+      "metrics": [
+        {"name": "ad_spend", "label": "Ad Spend", "format": "currency"},
+        {"name": "impressions", "label": "Impressions", "format": "number"},
+        {"name": "clicks", "label": "Clicks", "format": "number"},
+        {"name": "ctr", "label": "CTR", "format": "percentage", "target": 3},
+        {"name": "cpc", "label": "CPC", "format": "currency", "target": 2},
+        {"name": "conversions", "label": "Conversions", "format": "number"},
+        {"name": "cpa", "label": "CPA", "format": "currency", "target": 30},
+        {"name": "roas", "label": "ROAS", "format": "ratio", "target": 5}
+      ]
+    },
+    {
+      "id": "seo_rankings",
+      "type": "line_chart",
+      "title": "SEO Keyword Rankings (Top 10 Keywords)",
+      "xAxis": "date",
+      "yAxis": "average_position",
+      "yAxisInverted": true,
+      "series": "keyword",
+      "timeRange": "90_days"
+    },
+    {
+      "id": "organic_traffic_trend",
+      "type": "line_chart",
+      "title": "Organic Traffic Trend",
+      "xAxis": "date",
+      "yAxis": "traffic",
+      "timeRange": "90_days",
+      "showTrendline": true
+    },
+    {
+      "id": "cac_by_channel",
+      "type": "bar_chart",
+      "title": "CAC by Channel",
+      "xAxis": "channel",
+      "yAxis": "cac",
+      "showTarget": true,
+      "targetValue": 30,
+      "sortBy": "value_asc"
+    }
+  ]
+}

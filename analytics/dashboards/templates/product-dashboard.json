@@ -1,0 +1,196 @@
+{
+  "dashboardName": "Product Dashboard",
+  "description": "Product usage, feature adoption, and module performance metrics",
+  "refreshRate": "hourly",
+  "audience": ["Product Team", "Engineering", "Design"],
+  "widgets": [
+    {
+      "id": "activation_rate",
+      "type": "metric_card",
+      "title": "7-Day Activation Rate",
+      "metric": "activation_rate_7d",
+      "calculation": "(COUNT(DISTINCT user_id WHERE activated_at <= signup_date + 7) / COUNT(DISTINCT user_id WHERE signup_date >= DATE_SUB(TODAY, 14))) * 100",
+      "target": 60,
+      "format": "percentage"
+    },
+    {
+      "id": "wau",
+      "type": "metric_card",
+      "title": "Weekly Active Users",
+      "metric": "wau",
+      "calculation": "COUNT(DISTINCT user_id WHERE meaningful_action = true IN LAST 7 DAYS)",
+      "target": "${total_users * 0.40}",
+      "format": "number"
+    },
+    {
+      "id": "dau_mau_ratio",
+      "type": "metric_card",
+      "title": "Stickiness (DAU/MAU)",
+      "metric": "stickiness",
+      "calculation": "dau / mau",
+      "target": 0.30,
+      "format": "percentage"
+    },
+    {
+      "id": "module_completion_rate",
+      "type": "metric_card",
+      "title": "Module Completion Rate",
+      "metric": "module_completion_rate",
+      "calculation": "(COUNT(modules_completed) / COUNT(modules_started)) * 100",
+      "target": 75,
+      "format": "percentage"
+    },
+    {
+      "id": "time_to_value",
+      "type": "metric_card",
+      "title": "Median Time to First Value",
+      "metric": "time_to_value",
+      "calculation": "MEDIAN(first_module_completion_time - signup_time)",
+      "target": "48 hours",
+      "format": "hours"
+    },
+    {
+      "id": "feature_usage_heatmap",
+      "type": "heatmap",
+      "title": "Feature Usage by Day of Week",
+      "xAxis": "day_of_week",
+      "yAxis": "feature_name",
+      "colorScale": "usage_count",
+      "features": [
+        "brand_assessment",
+        "brand_purpose_module",
+        "visual_identity_module",
+        "messaging_module",
+        "pdf_export",
+        "team_collaboration",
+        "templates",
+        "save_progress"
+      ]
+    },
+    {
+      "id": "module_funnel",
+      "type": "funnel_chart",
+      "title": "Module Completion Funnel",
+      "steps": [
+        {"name": "Module Started", "metric": "module_starts"},
+        {"name": "Section 1 Complete", "metric": "section_1_complete"},
+        {"name": "50% Progress", "metric": "module_50_percent"},
+        {"name": "75% Progress", "metric": "module_75_percent"},
+        {"name": "100% Complete", "metric": "module_complete"}
+      ],
+      "showConversionRates": true
+    },
+    {
+      "id": "module_performance_table",
+      "type": "table",
+      "title": "Module Performance Metrics",
+      "columns": [
+        {"field": "module_name", "header": "Module", "sortable": true},
+        {"field": "start_rate", "header": "Start Rate", "format": "percentage"},
+        {"field": "completion_rate", "header": "Completion Rate", "format": "percentage"},
+        {"field": "avg_time", "header": "Avg Time", "format": "minutes"},
+        {"field": "user_rating", "header": "User Rating", "format": "stars"},
+        {"field": "drop_off_point", "header": "Primary Drop-off"}
+      ],
+      "defaultSort": {"column": "start_rate", "direction": "desc"}
+    },
+    {
+      "id": "feature_adoption_matrix",
+      "type": "scatter_plot",
+      "title": "Feature Adoption vs Retention Impact",
+      "xAxis": {"metric": "adoption_rate", "label": "Adoption Rate (%)"},
+      "yAxis": {"metric": "retention_impact", "label": "Retention Impact (%)"},
+      "bubbleSize": "usage_frequency",
+      "quadrants": [
+        {"label": "Core Features", "xRange": [60, 100], "yRange": [15, 100]},
+        {"label": "Grow Adoption", "xRange": [0, 60], "yRange": [15, 100]},
+        {"label": "Low Impact", "xRange": [0, 60], "yRange": [0, 15]},
+        {"label": "Review/Sunset", "xRange": [60, 100], "yRange": [0, 15]}
+      ]
+    },
+    {
+      "id": "assessment_scores_distribution",
+      "type": "histogram",
+      "title": "Brand Assessment Scores Distribution",
+      "metric": "assessment_score",
+      "bins": 10,
+      "range": [0, 100],
+      "showMedian": true,
+      "showMean": true
+    },
+    {
+      "id": "avg_time_per_module",
+      "type": "bar_chart",
+      "title": "Average Time Spent per Module",
+      "xAxis": "module_name",
+      "yAxis": "avg_minutes",
+      "sortBy": "value_desc",
+      "showTarget": true,
+      "targetValue": 25
+    },
+    {
+      "id": "drop_off_analysis",
+      "type": "waterfall_chart",
+      "title": "User Journey Drop-off Points",
+      "startingValue": "signups",
+      "steps": [
+        {"name": "Email Verified", "change": -5},
+        {"name": "Onboarding Started", "change": -14},
+        {"name": "Profile Completed", "change": -8},
+        {"name": "First Module Started", "change": -24},
+        {"name": "First Module Completed", "change": -9}
+      ],
+      "endingValue": "activated_users"
+    },
+    {
+      "id": "pdf_export_rate",
+      "type": "metric_card",
+      "title": "PDF Export Rate",
+      "metric": "pdf_export_rate",
+      "calculation": "(COUNT(DISTINCT user_id WHERE pdf_exported >= 1) / COUNT(DISTINCT active_users)) * 100",
+      "target": 30,
+      "format": "percentage"
+    },
+    {
+      "id": "user_satisfaction_score",
+      "type": "gauge",
+      "title": "Product Satisfaction (CSAT)",
+      "metric": "product_csat",
+      "calculation": "(COUNT(satisfied_responses) / COUNT(total_responses)) * 100",
+      "min": 0,
+      "max": 100,
+      "target": 85,
+      "ranges": [
+        {"min": 0, "max": 60, "color": "red", "label": "Poor"},
+        {"min": 60, "max": 80, "color": "yellow", "label": "Good"},
+        {"min": 80, "max": 100, "color": "green", "label": "Excellent"}
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "type": "date_range",
+      "default": "last_30_days"
+    },
+    {
+      "type": "user_segment",
+      "options": ["all_users", "free_users", "paid_users", "activated_users"]
+    },
+    {
+      "type": "tier",
+      "options": ["all", "foundation", "complete", "professional"]
+    }
+  ],
+  "alerts": [
+    {
+      "metric": "activation_rate_7d",
+      "condition": "value < 0.50",
+      "severity": "warning"
+    },
+    {
+      "metric": "module_completion_rate",
+      "condition": "value < 0.70",
+      "severity": "warning"
+    }
+  ]
+}
