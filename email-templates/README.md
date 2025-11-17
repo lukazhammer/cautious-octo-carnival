@@ -14,12 +14,14 @@ Professional HTML email templates for Brandora, designed for Brevo/SendinBlue co
 | `06-upgrade-day-7.html` | Nurture sequence (case study) | 7 days after assessment |
 | `07-upgrade-day-14.html` | Nurture sequence (urgency) | 14 days after assessment |
 
-## 🎨 Brand Colors Used
+## 🎨 Bauhaus Brand Colors
 
-- **Navy**: `#070058` - Primary brand color
-- **Blue**: `#6F8AEC` - Secondary/accent color
-- **Yellow**: `#FFBE44` - CTA buttons and highlights
-- **Background**: `#F1F9FF` - Light blue background
+- **Primary**: `#180D23` - Dark purple/navy (main brand color)
+- **Highlight**: `#98BBEC` - Light blue (secondary accents)
+- **Accent**: `#FFA9F9` - Pink/magenta (CTA buttons and highlights)
+- **Background**: `#F9F9F9` - Light gray background
+
+The design follows Bauhaus principles: clean geometric shapes, bold typography, functional design, and a limited color palette with strong contrasts.
 
 ## 📝 Variable Placeholders
 
